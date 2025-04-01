@@ -1,0 +1,37 @@
+cmake_minimum_required(VERSION 3.25)
+
+project(ws2024-group-44-p36 VERSION 1.0 LANGUAGES CXX)
+
+# Include directories
+include_directories(
+    ${PROJECT_SOURCE_DIR}/include
+)
+
+# Common compile options
+set(COMMON_COMPILE_OPTIONS
+    -Wall
+    -Wextra
+    -pedantic
+    -Werror
+    -Wno-unused-parameter
+    -Wno-unused-variable
+    -g
+)
+
+# Executable: read_dataset_images
+add_executable(read_dataset_images src/read_dataset_images.cpp)
+target_compile_features(read_dataset_images PRIVATE cxx_std_20)
+target_compile_options(read_dataset_images PRIVATE ${COMMON_COMPILE_OPTIONS})
+# target_link_options(read_dataset_images PRIVATE -pg)
+
+# Executable: read_dataset_labels
+add_executable(read_dataset_labels src/read_dataset_labels.cpp)
+target_compile_features(read_dataset_labels PRIVATE cxx_std_20)
+target_compile_options(read_dataset_labels PRIVATE ${COMMON_COMPILE_OPTIONS})
+# target_link_options(read_dataset_labels PRIVATE -pg)
+
+# Executable: train
+add_executable(train src/train.cpp)
+target_compile_features(train PRIVATE cxx_std_20)
+target_compile_options(train PRIVATE ${COMMON_COMPILE_OPTIONS} -O3)
+# target_link_options(train PRIVATE)
